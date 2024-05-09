@@ -1,13 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ActorService {
-  private baseUrl = `${environment.tmdbBaseUrl}/search/person`;
-  private apiKey = `?api_key=${environment.tmdbApiKey}`;
+  private baseUrl = `$https://api.themoviedb.org/3/search/person`;
+  private apiKey = `?api_key=${'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4ZTkyYjk3ZDM4NmIzOTA1ODkwNmQ0ZjlmZmQwMmNjNCIsInN1YiI6IjY2Mjk4M2I2MjU4ODIzMDE2NDkyOTBjNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.6dKMTiKqZ0lDIocJsqUKww9vo6n8H6Ep8I2NTRH_vC0'}`;
 
   constructor(private http: HttpClient) {}
 
@@ -16,6 +15,6 @@ export class ActorService {
   }
 
   getActorMovies(actorId: number) {
-    return this.http.get(`${environment.tmdbBaseUrl}/person/${actorId}/movie_credits${this.apiKey}&language=en-US`);
+    return this.http.get(`$https://api.themoviedb.org/3/person/${actorId}/movie_credits${this.apiKey}&language=en-US`);
   }
 }
