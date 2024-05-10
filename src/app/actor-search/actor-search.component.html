@@ -3,8 +3,8 @@
   <div class="form-field">
     <label for="actorSearch">Search for actors</label>
     <input id="actorSearch" type="text" [(ngModel)]="query" (keyup.enter)="searchActors(query)" placeholder="Enter actor name">
+    <button class="search-button" (click)="searchActors(query)">Search</button>
   </div>
-  <button class="search-button" (click)="searchActors(query)">Search</button>
 </div>
 
 <div class="actors-container">
@@ -17,6 +17,10 @@
         <li *ngFor="let movie of actor.known_for">{{ movie.title }}</li>
       </ul>
       <button class="details-button" (click)="goToActorDetails(actor.id)">View Details</button>
+      <button class="favorite-button" (click)="toggleFavorite(actor)">
+        <i [class]="actor.isFavorite ? 'fas fa-heart' : 'far fa-heart'" aria-hidden="true">favorite</i>
+      </button>
+      
     </div>
   </div>
 </div>

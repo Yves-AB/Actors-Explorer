@@ -4,6 +4,7 @@ import { TmdbService } from '../services/tmdb.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from "../navbar/navbar.component";
+import { FavoritesService } from '../favorites.service';
 
 @Component({
     selector: 'app-actor-search',
@@ -17,7 +18,7 @@ export class ActorSearchComponent implements OnInit {
   pagenum: number = 1;
   query: string = "";
 
-  constructor(private route: ActivatedRoute, private tmdbService: TmdbService, private router: Router) {}
+  constructor(private route: ActivatedRoute, private tmdbService: TmdbService, private router: Router,  private favoritesService: FavoritesService) {}
 
   ngOnInit() {
     console.log("Actor Search component initialized.");
@@ -33,8 +34,11 @@ export class ActorSearchComponent implements OnInit {
   searchActors(query: string): void {
     this.tmdbService.searchActors(query).subscribe({
       next: (response) => {
-        console.log('Actors found: ', response);
-        this.actors = response.results;
+        const favorites = this.favoritesService.initializeFavorites();
+        this.actors = response.results.map((actor: { id: number; }) => ({
+          ...actor,
+          isFavorite: favorites.includes(actor.id)  // Set isFavorite based on favorites
+        }));
       },
       error: (error) => {
         console.error('Error fetching actors: ', error);
@@ -43,6 +47,15 @@ export class ActorSearchComponent implements OnInit {
         console.log('Actor fetch complete');
       }
     });
+  }
+
+  toggleFavorite(actor: any): void {
+    actor.isFavorite = !actor.isFavorite;
+    if (actor.isFavorite) {
+      this.favoritesService.addFavorite(actor.id);
+    } else {
+      this.favoritesService.removeFavorite(actor.id);
+    }
   }
 
   goToActorDetails(id: number): void {
