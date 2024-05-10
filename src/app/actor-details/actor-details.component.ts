@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TmdbService } from '../services/tmdb.service';
+import { NavbarComponent } from "../navbar/navbar.component";
 
 @Component({
-  selector: 'app-actor-movies',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './actor-details.component.html',
-  styleUrls: ['./actor-details.component.css']
+    selector: 'app-actor-movies',
+    standalone: true,
+    templateUrl: './actor-details.component.html',
+    styleUrls: ['./actor-details.component.css'],
+    imports: [CommonModule, NavbarComponent]
 })
 export class ActorDetailsComponent implements OnInit {
   allMovies: any[] = []; // Stores all fetched movies

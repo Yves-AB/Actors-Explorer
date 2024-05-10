@@ -3,13 +3,14 @@ import { CommonModule } from '@angular/common';
 import { TmdbService } from '../services/tmdb.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { NavbarComponent } from "../navbar/navbar.component";
 
 @Component({
-  selector: 'app-actor-search',
-  standalone: true,
-  imports: [CommonModule,FormsModule],
-  templateUrl: './actor-search.component.html',
-  styleUrls: ['./actor-search.component.css']
+    selector: 'app-actor-search',
+    standalone: true,
+    templateUrl: './actor-search.component.html',
+    styleUrls: ['./actor-search.component.css'],
+    imports: [CommonModule, FormsModule, NavbarComponent]
 })
 export class ActorSearchComponent implements OnInit {
   actors: any[] = [];
