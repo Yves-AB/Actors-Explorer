@@ -9,5 +9,10 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'Actors-Explorer';
+  showFavorites = false;
+
+  toggleFavorites() {
+    this.showFavorites = !this.showFavorites;
+  }
+
 }
