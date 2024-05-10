@@ -1,0 +1,48 @@
+/* Grid layout for actors */
+.actors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.actor-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.actor-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.actor-image {
+    width: 80%;
+    height: 80%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.actor-details {
+    padding: 15px;
+}
+
+.actor-name {
+    margin: 10px 0 5px;
+    font-size: 1.4rem;
+    color: #333;
+}
+
+.actor-overview {
+    font-size: 0.9rem;
+    color: #666;
+    text-align: center;
+}
