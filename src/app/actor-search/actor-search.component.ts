@@ -1,27 +1,53 @@
 import { Component, OnInit } from '@angular/core';
-import { ActorService } from '../services/tmdb.service';
+import { CommonModule } from '@angular/common';
+import { TmdbService } from '../services/tmdb.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+
 @Component({
   selector: 'app-actor-search',
+  standalone: true,
+  imports: [CommonModule,FormsModule],
   templateUrl: './actor-search.component.html',
   styleUrls: ['./actor-search.component.css']
 })
 export class ActorSearchComponent implements OnInit {
   actors: any[] = [];
-  searchTerm: string = '';
+  pagenum: number = 1;
+  query: string = "";
 
-  constructor(private actorService: ActorService) {}
+  constructor(private route: ActivatedRoute, private tmdbService: TmdbService, private router: Router) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
+    console.log("Actor Search component initialized.");
+
+    // Subscribe to route parameters
+    this.route.params.subscribe(params => {
+      this.query = params['query'];
+      this.pagenum = +params['page']; // The '+' converts string to number
+      this.searchActors(this.query);
+    });
   }
 
-  search(): void {
-    if (this.searchTerm) {
-      this.actorService.searchActors(this.searchTerm).subscribe({
-        next: (response: any) => {
-          this.actors = response.results;
-        },
-        error: (err) => console.error('Error fetching actors:', err)
-      });
-    }
+  searchActors(query: string): void {
+    this.tmdbService.searchActors(query).subscribe({
+      next: (response) => {
+        console.log('Actors found: ', response);
+        this.actors = response.results;
+      },
+      error: (error) => {
+        console.error('Error fetching actors: ', error);
+      },
+      complete: () => {
+        console.log('Actor fetch complete');
+      }
+    });
+  }
+
+  goToActorDetails(id: number): void {
+    console.log('Navigating to actor details: ', id);
+    this.router.navigate(['actor', id]).then(() => {
+      window.location.reload();
+    });
   }
 }
