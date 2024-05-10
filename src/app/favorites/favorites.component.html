@@ -1,1 +1,8 @@
-<p>favorites works!</p>
+<<div id="actors">
+    <div class="actor-card" *ngFor="let actor of actors" (click) = goToActorDetails(actor.id)>
+      <h2 >{{ actor.name }}</h2>
+      <img src="https://image.tmdb.org/t/p/w500{{ actor.poster_path }}" class="img-poster">
+      <h3>{{ actor.overview }}</h3>
+    </div>
+  </div>
+  >
