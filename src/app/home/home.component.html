@@ -1,0 +1,9 @@
+<div class="home-container">
+    <h1>Welcome to the Actor Search App</h1>
+    <p>Find information about your favorite actors and their movies.</p>
+    <div class="search-box">
+      <input type="text" placeholder="Search for actors..." [(ngModel)]="searchTerm" (keyup.enter)="search()">
+      <button (click)="search()">Search</button>
+    </div>
+  </div>
+  
