@@ -18,4 +18,16 @@ export class TmdbService {
     const url = 'https://api.themoviedb.org/3/search/person?query='+query+'&include_adult=false&language=en-US&page=1';
     return this.http.get(url, { headers });
   }
+
+  getActorMovies(actorId: number): Observable<any> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${this.apiKey}`
+    });
+    const url = `https://api.themoviedb.org/3/person/${actorId}/movie_credits?language=en-US`;
+    return this.http.get(url, { headers });
+  }
+
+
+  
 }
+
