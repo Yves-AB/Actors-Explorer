@@ -9,11 +9,17 @@
 .movie-item {
   display: flex;
   flex-direction: column;
-  width: 30%; /* Adjust based on the total width of the container to fit 3 items per row */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  width: calc(33.333% - 20px); /* Adjusting to fit 3 items per row */
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
   margin-bottom: 20px;
   background-color: #fff;
   border-radius: 10px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.movie-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.18);
 }
 
 .movie-item img {
@@ -29,13 +35,13 @@
 }
 
 .movie-info h3 {
-  color: #2c3e50;
-  font-size: 1.2em;
+  color: #1976d2; 
+  margin: 10px 0;
 }
 
 .movie-info p {
   font-size: 0.9em;
-  color: #34495e;
+  color: #666;
   margin: 5px 0;
 }
 
