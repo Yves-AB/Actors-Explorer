@@ -27,6 +27,15 @@ export class TmdbService {
     return this.http.get(url, { headers });
   }
 
+  getActorDetails(actorId: number): Observable<any> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${this.apiKey}`
+    });
+    const url = `https://api.themoviedb.org/3/person/${actorId}?api_key=${this.apiKey}&append_to_response=credits`;
+    return this.http.get(url, { headers });
+  }
+  
+
 
   
 }
