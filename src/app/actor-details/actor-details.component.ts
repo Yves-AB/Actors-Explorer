@@ -54,4 +54,11 @@ export class ActorDetailsComponent implements OnInit {
       this.updatePage(this.currentPage - 1);
     }
   }
+
+  //to get the rating /5 we use a basic mathematic formula
+  normalizeRating(popularity: number): number {
+    const maxPopularity = 100; // Adjust based on your observations
+    return (popularity / maxPopularity) * 5;
+  }
+
 }
