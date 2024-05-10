@@ -5,7 +5,7 @@
         <h3>{{ movie.title }}</h3>
         <p>{{ movie.overview }}</p>
         <p>Release Date: {{ movie.release_date }}</p>
-        <p>Rating: {{ movie.popularity | number:'1.0-2' }}/5</p> <!-- Adjust as needed for scale -->
+        <p>Rating: {{ movie.popularity | number:'1.0-2' }}/5</p> 
       </div>
     </div>
   </div>
@@ -13,4 +13,5 @@
     <button (click)="previousPage()">Previous</button>
     <button (click)="nextPage()">Next</button>
   </div>
+  
   
