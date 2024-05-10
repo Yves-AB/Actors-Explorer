@@ -9,10 +9,5 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  showFavorites = false;
-
-  toggleFavorites() {
-    this.showFavorites = !this.showFavorites;
-  }
 
 }

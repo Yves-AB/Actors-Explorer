@@ -5,7 +5,7 @@ import { ActorDetailsComponent } from './actor-details/actor-details.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent },  // Make HomeComponent the default landing page
+  { path: '', component: HomeComponent },  
   { path: 'search', component: ActorSearchComponent },
   { path: 'actor/:id', component: ActorDetailsComponent },
   { path: 'favorites', component: FavoritesComponent }
