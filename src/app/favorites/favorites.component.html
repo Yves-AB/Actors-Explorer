@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <div id="actors" class="actors-grid">
   <div *ngFor="let actor of actors" class="actor-card" (click)="goToActorDetails(actor.id)">
       <img src="https://image.tmdb.org/t/p/w500{{ actor.profile_path }}" alt="{{ actor.name }}" class="actor-image">

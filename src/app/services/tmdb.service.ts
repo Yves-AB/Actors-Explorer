@@ -15,6 +15,7 @@ export class TmdbService {
       Authorization: `Bearer ${this.apiKey}`
     });
 
+    //Take the movie database link, inject "query", which will be the actor
     const url = 'https://api.themoviedb.org/3/search/person?query='+query+'&include_adult=false&language=en-US&page=1';
     return this.http.get(url, { headers });
   }

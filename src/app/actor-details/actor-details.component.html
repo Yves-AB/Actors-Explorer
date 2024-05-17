@@ -6,6 +6,7 @@
         <h3>{{ movie.title }}</h3>
         <p>{{ movie.overview }}</p>
         <p>Release Date: {{ movie.release_date }}</p>
+        <p>{{movie.popularity}}</p>
         <p>Rating: {{ normalizeRating(movie.popularity) | number:'1.0-1' }}/5</p>
       </div>
     </div>

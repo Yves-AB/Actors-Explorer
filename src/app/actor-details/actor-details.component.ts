@@ -11,6 +11,7 @@ import { NavbarComponent } from "../navbar/navbar.component";
     styleUrls: ['./actor-details.component.css'],
     imports: [CommonModule, NavbarComponent]
 })
+
 export class ActorDetailsComponent implements OnInit {
   allMovies: any[] = []; // Stores all fetched movies
   movies: any[] = []; // Stores movies for the current page
@@ -58,8 +59,9 @@ export class ActorDetailsComponent implements OnInit {
 
   //to get the rating /5 we use a basic mathematic formula
   normalizeRating(popularity: number): number {
-    const maxPopularity = 100; // Adjust based on your observations
-    return (popularity / maxPopularity) * 5;
+    const maxPopularity = 100; 
+    const finalPopularity = (popularity / maxPopularity) * 5 ; 
+    return finalPopularity ; 
   }
 
 }

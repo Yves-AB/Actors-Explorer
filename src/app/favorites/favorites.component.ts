@@ -5,13 +5,14 @@ import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { FavoritesService } from '../favorites.service';
 import { forkJoin } from 'rxjs';
+import { NavbarComponent } from "../navbar/navbar.component";
 
 @Component({
-  selector: 'app-fav',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './favorites.component.html',
-  styleUrl: './favorites.component.css'
+    selector: 'app-fav',
+    standalone: true,
+    templateUrl: './favorites.component.html',
+    styleUrl: './favorites.component.css',
+    imports: [CommonModule, NavbarComponent]
 })
 export class FavComponent implements OnInit{
   actors: any[] = [];
@@ -29,6 +30,7 @@ export class FavComponent implements OnInit{
     forkJoin(apiRequests).subscribe({
       next: (responses) => {
         console.log('Responses: ', responses);
+        
         // Handle responses as needed, e.g., merging into a single array
         this.actors = responses;
       },
@@ -39,6 +41,7 @@ export class FavComponent implements OnInit{
         console.log('Actor fetch complete');
       }
     });
+
   }
   goToActorDetails(id: Number) {
     console.log('Go to actor details: ', id);
